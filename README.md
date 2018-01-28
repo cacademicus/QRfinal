@@ -1,5 +1,5 @@
 # QRfinal
-Scanning and posting the QR String to the AttendanceTrackingSystem
+Scanning and posting the QR String to the AttendanceTrackingSystem (ASE Project 2017)
 
 This code will execute the QR-Code-Scanning Process on the Raspberry Pi. With the connected webcam, the Pi will scan the qr code for attendance to the tutorials and will note whether the Student has presented an excercise. Navigation and interaction is via the PiFace, the Terminal and the Buttons on the Pi.
 
