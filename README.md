@@ -1,6 +1,14 @@
 # QRfinal
 Scanning and posting the QR String to the AttendanceTrackingSystem
 
-How it works:
+This code will execute the QR-Code-Scanning Process on the Raspberry Pi. With the connected webcam, the Pi will scan the qr code for attendance to the tutorials and will note whether the Student has presented an excercise.
 
-When the raspi is connected to a webcam, and a QR Code from the Android App is given, the Raspi will scan the QR Code and will convert it to the String. The QR Code will be posted to the Web-Service, which means that a Student is "saved" as Attendant, and in case he has to present something, it will be asked, whether he will present something or not. This will also be send to the Web-Service.
+Step 1:
+
+PiFace and the console will give the option to select whether a qr-code should be scanned (which means, the student is present) or he is not present.
+
+Step 2:
+
+For the case a student is in attendance, the next option is whether the student will present an excercise or not. 
+
+
