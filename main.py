@@ -1,16 +1,11 @@
 #!/usr/bin/env python
 #-*- coding: UTF-8 -*-
 '''
-Main application
+Our main file
 '''
+import qrcode, requests, pifacecad, os, socket
 
-import qrcode
-import requests
-import pifacecad
-import os
-import socket
-
-def print_instructions_raspi():
+def print_instructions_rasperry():
     cad.lcd.clear()
     cad.lcd.set_cursor(0, 0)
     cad.lcd.write("0: read QR \n")
@@ -47,7 +42,7 @@ def presented(event):
     t = "true"
     global postStringArray
     global result
-    try:
+    try: # try and catch block for the case of being offline
         p= requests.post("http://ats-1-7.appspot.com/AttendanceLog/123456/"+result.decode('ascii')+"/true/")
         print(p.text)
         cad.lcd.write(str(p.status_code))
@@ -59,8 +54,7 @@ def presented(event):
     print ("FINISHED")
     cad.lcd.write("\nFINISHED")
     print_instructions()
-    print_instructions_raspi()  
-
+    print_instructions_rasperry()  
             
 def not_presented(event):
     s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
@@ -78,7 +72,7 @@ def not_presented(event):
     print ("FINISHED")
     cad.lcd.write("\nFINISHED")
     print_instructions()
-    print_instructions_raspi()  
+    print_instructions_rasperry()  
     
 def print_present():
     cad.lcd.clear()
@@ -115,7 +109,7 @@ def push_offline(self):
             cad.lcd.write("\nTry again")
             print(postStringArray)
     print_instructions()
-    print_instructions_raspi() 
+    print_instructions_rasperry() 
 
 postStringArray = []
 cad = pifacecad.PiFaceCAD() # display
@@ -128,7 +122,5 @@ listener.register(3,pifacecad.IODIR_FALLING_EDGE, presented)
 listener.register(4,pifacecad.IODIR_FALLING_EDGE, not_presented)
 listener.register(1,pifacecad.IODIR_FALLING_EDGE, push_offline)
 listener.activate()
-print_instructions_raspi()
+print_instructions_rasperry()
 print_instructions()    
-
-
